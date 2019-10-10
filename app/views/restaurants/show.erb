@@ -1,0 +1,25 @@
+<p>
+  <a href="/restaurants">See All Restaurants</a>
+  <a href="/users">See All Users</a>
+  <a href="/restaurants/new">Add a Restaurant</a> 
+  <a href="/users/new">Add a User</a>
+</p>
+<h1><%= @restaurant.name %><h1>
+<h2><%= "*"*@restaurant.rating %>, <%= @restaurant.address %></h2>
+<h2>Users</h2>
+<ul>
+  <% @restaurant.users.each do |user| %>
+    <li><h3><%= user.name %></h3></li>
+  <% end %>
+</ul>
+<h2>Add a User to this Restaurant</h2>
+
+<form method="post" action="/restaurants/<%= @restaurant.id %>">
+  <input id= "hidden" type="hidden" name="_method" value="patch">
+  <select name="user_id" id="user-select">
+    <% @users.each do |user| %>
+      <option  value="<%= user.id %>" ><%= user.name %></option>
+    <% end %>
+  </select>
+  <input type="submit" value="Add User">
+</form>
