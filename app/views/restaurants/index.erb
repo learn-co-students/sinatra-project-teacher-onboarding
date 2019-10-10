@@ -1,0 +1,10 @@
+<p>
+  <a href="/users">See All Users</a>
+  <a href="/restaurants/new">Add a Restaurant</a> 
+  <a href="/users/new">Add a User</a>
+</p>
+<h1>All Restaurants</h1>
+<% @restaurants.each do |restaurant| %>
+  <a href="/restaurants/<%= restaurant.id %>"><h2><%= restaurant.name %></h2></a>
+  <h3><%= "*"*restaurant.rating %>, <%= restaurant.address %></h3>
+<% end %>
